@@ -39,10 +39,20 @@ class ColorDescriptor:
 
 		return features
 
-	def histogram(image):
-		pass
+	def histogram(self, image, mask):
+		# extract 3D color histogram from masked region of image
+		hist = cv2.calcHist([image], [0, 1, 2], mask, self.bins, [0, 180, 0, 256, 0, 256])
+
+		#normalize hist if we're using OpenCV 2.4
+		if imutils.isCv2():
+			hist = cv2.normalize(hist).flatten()
+
+		# otherwise handle OpenCV3
+		else:
+			hist = cv2.normalize(hist, hist).flatten()
+
+		return hist
 
 
 
 
-		
