@@ -1,4 +1,4 @@
-import numpy as numpy
+import numpy as np
 import cv2
 import imutils
 
@@ -44,7 +44,7 @@ class ColorDescriptor:
 		hist = cv2.calcHist([image], [0, 1, 2], mask, self.bins, [0, 180, 0, 256, 0, 256])
 
 		#normalize hist if we're using OpenCV 2.4
-		if imutils.isCv2():
+		if imutils.is_cv2():
 			hist = cv2.normalize(hist).flatten()
 
 		# otherwise handle OpenCV3

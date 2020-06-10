@@ -22,7 +22,7 @@ for imagePath in glob.glob(args["dataset"] + "/*.jpg"):
 	features = cd.describe(image)
 
 	# write features to output file
-	feaures = [str(f) for f in features]
+	features = [str(f) for f in features]
 	output.write("%s,%s\n" % (imageID, ",".join(features)))
 
 output.close()
